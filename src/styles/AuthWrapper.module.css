@@ -1,0 +1,24 @@
+.authContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.formContainer {
+    width: 500px;
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 50px;
+    border-radius: 20px;
+}
+
+.formTitle {
+    display: flex;
+    flex-direction: column;
+}
+
