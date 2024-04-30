@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../firebase";
 import styles from "../styles/SignUp.module.css";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
@@ -10,6 +12,14 @@ const SignUp = () => {
   const [passwordFocus, setPasswordFocus] = useState(false);
   const [confPasswordFocus, setConfPasswordFocus] = useState(false);
   const [usernameFocus, setUsernameFocus] = useState(false);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confPassword, setConfPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const handleEmailFocus = () => {
     setEmailFocus(true);
@@ -27,26 +37,57 @@ const SignUp = () => {
     setUsernameFocus(true);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (password !== confPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    try {
+      const userInfo = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userInfo.user;
+
+      await updateProfile(user, { displayName: username });
+
+      console.log(user);
+      navigate("/");
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      setError(`${errorCode}: ${errorMessage}`);
+      console.log(errorCode, errorMessage);
+    }
+  };
+
   return (
     <div className={styles.signUpForm}>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <div className={styles.inputContainer}>
           <div className={styles.inputItem}>
             <span className={usernameFocus ? styles.hideIcon : ""}>
               <AccountCircleIcon className={styles.formIcon} />
             </span>
             <input
-              type="username"
+              type="text"
               id="username"
               name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               onFocus={handleUsernameFocus}
               onBlur={() => setUsernameFocus(false)}
+              required
             />
             <label
               htmlFor="username"
               className={usernameFocus ? styles.hideLabel : ""}
             >
-              Full Name
+              Username
             </label>
           </div>
           <div className={styles.inputItem}>
@@ -57,8 +98,11 @@ const SignUp = () => {
               type="email"
               id="email"
               name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               onFocus={handleEmailFocus}
               onBlur={() => setEmailFocus(false)}
+              required
             />
             <label
               htmlFor="email"
@@ -75,8 +119,11 @@ const SignUp = () => {
               type="password"
               id="password"
               name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               onFocus={handlePasswordFocus}
               onBlur={() => setPasswordFocus(false)}
+              required
             />
             <label
               htmlFor="password"
@@ -93,8 +140,11 @@ const SignUp = () => {
               type="password"
               id="confirm"
               name="confirm"
+              value={confPassword}
+              onChange={(e) => setConfPassword(e.target.value)}
               onFocus={handleConfPasswordFocus}
               onBlur={() => setConfPasswordFocus(false)}
+              required
             />
             <label
               htmlFor="confirm"
@@ -104,6 +154,7 @@ const SignUp = () => {
             </label>
           </div>
         </div>
+        {error && <div className={styles.errorMessage}>{error}</div>}
         <div className={styles.navigationContainer}>
           <div className={styles.forgotPwdContainer}>
             <Link className={styles.forgotPwd} to={"/"}>
@@ -112,13 +163,13 @@ const SignUp = () => {
           </div>
           <div className={styles.buttonSignUp}>
             <div className={styles.loginBtnContainer}>
-              <button>Login</button>
+              <button type="submit">Sign Up</button>
             </div>
             <div className={styles.signUpContainer}>
               <p>
                 Don't have an account?{""}{" "}
-                <Link className={styles.signUpLink} to={"/signup"}>
-                  Sign Up
+                <Link className={styles.signUpLink} to={"/signin"}>
+                  Sign In
                 </Link>
               </p>
             </div>

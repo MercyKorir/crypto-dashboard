@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 import styles from "../styles/SignIn.module.css";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
@@ -7,6 +10,11 @@ import LockIcon from "@mui/icons-material/Lock";
 const SignIn = () => {
   const [emailFocus, setEmailFocus] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleEmailFocus = () => {
     setEmailFocus(true);
@@ -16,9 +24,25 @@ const SignIn = () => {
     setPasswordFocus(true);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const userInfo = await signInWithEmailAndPassword(auth, email, password);
+      const user = userInfo.user;
+      console.log(user);
+      navigate("/");
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      setError(`Error: ${errorCode} - ${errorMessage}`);
+      console.log(errorCode, errorMessage);
+    }
+  };
+
   return (
     <div className={styles.loginForm}>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <div className={styles.inputContainer}>
           <div className={styles.inputItem}>
             <span className={emailFocus ? styles.hideIcon : ""}>
@@ -28,8 +52,11 @@ const SignIn = () => {
               type="email"
               id="email"
               name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               onFocus={handleEmailFocus}
               onBlur={() => setEmailFocus(false)}
+              required
             />
             <label
               htmlFor="email"
@@ -46,8 +73,11 @@ const SignIn = () => {
               type="password"
               id="password"
               name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               onFocus={handlePasswordFocus}
               onBlur={() => setPasswordFocus(false)}
+              required
             />
             <label
               htmlFor="password"
@@ -57,6 +87,7 @@ const SignIn = () => {
             </label>
           </div>
         </div>
+        {error && <div className={styles.errorMessage}>{error}</div>}
         <div className={styles.navigationContainer}>
           <div className={styles.forgotPwdContainer}>
             <Link className={styles.forgotPwd} to={"/"}>
@@ -65,7 +96,7 @@ const SignIn = () => {
           </div>
           <div className={styles.buttonSignUp}>
             <div className={styles.loginBtnContainer}>
-              <button>Login</button>
+              <button type="submit">Login</button>
             </div>
             <div className={styles.signUpContainer}>
               <p>
