@@ -20,7 +20,7 @@ const AuthWrapper = ({ children, formType }) => {
   useEffect(() => {
     const determineHeight = () => {
       if (formType === "login") {
-        setHeightValue("600px");
+        setHeightValue("700px");
         setTitle("Login");
         setDescription("Welcome Back!👋");
       } else if (formType === "signup") {
