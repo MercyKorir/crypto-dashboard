@@ -27,7 +27,7 @@ const AuthWrapper = ({ children, formType }) => {
         setTitle("Sign Up");
         setDescription("New here? Welcome!👋");
         if (screenWidth >= 768) {
-          setHeightValue("630px");
+          setHeightValue("900px");
         } else {
           setHeightValue("fit-content");
         }
