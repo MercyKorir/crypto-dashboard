@@ -44,14 +44,14 @@
   align-items: center;
   background-color: #fff;
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
 .userIcon {
-  font-size: 50px;
+  font-size: 30px;
   color: #000;
   transition: all 0.2s ease-in-out;
 }
@@ -62,4 +62,27 @@
 
 .userProfile:hover .userIcon {
   color: #fff;
+}
+
+/* Media Queries */
+@media (min-width: 425px) {
+  .userProfile {
+    width: 70px;
+    height: 70px;
+  }
+
+  .userIcon {
+    font-size: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .userProfile {
+    width: 100px;
+    height: 100px;
+  }
+
+  .userIcon {
+    font-size: 50px;
+  }
 }

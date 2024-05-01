@@ -65,7 +65,7 @@ const CryptoList = () => {
               <p>This is your dashboard.</p>
             </div>
             <div className={styles.popularCardWrapper}>
-              <h2>Popular Cryptocurrencies</h2>
+              <h2>Popular</h2>
               <p>Check out the latest trends.</p>
             </div>
           </div>
