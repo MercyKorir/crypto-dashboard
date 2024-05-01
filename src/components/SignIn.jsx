@@ -201,6 +201,14 @@ const SignIn = () => {
                 </Link>
               </p>
             </div>
+            <div className={styles.signUpContainer}>
+              <p>
+                Or{" "}
+                <Link className={styles.signUpLink} to={"/"}>
+                  Go Home
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </form>
