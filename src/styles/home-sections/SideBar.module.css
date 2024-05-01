@@ -1,0 +1,175 @@
+.sideBarContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 50px 0px;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 0px 20px 20px 0px;
+  transition: all 0.3s ease-in-out;
+}
+
+.sideBarContainer.minimize {
+  width: 80px;
+  background: transparent;
+  backdrop-filter: blur(20px);
+}
+
+.sideBarContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.sideBarContent.minimize {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.sideBarContent.minimize .nav {
+  border-top: none;
+}
+
+.nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 40px;
+  transition: all 0.3s ease-in-out;
+}
+
+.navButtons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.homeBtnContainer {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(34, 52, 174, 0.5);
+  padding: 20px 0px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.homeBtnContainer:hover {
+  background: rgba(34, 52, 174, 0.7);
+}
+
+.homeBtn,
+.logoutBtn {
+  text-decoration: none;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #fff;
+}
+
+.logoutBtnContainer {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoutBtn {
+  width: 100%;
+  padding: 20px 0px;
+  border: none;
+  background: rgba(34, 52, 174, 1);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.logoutBtn:hover {
+  background: rgba(34, 52, 174, 0.8);
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.collapseExpandCont {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sideBarContent.minimize .collapseBtn {
+  background: none;
+  padding: 20px;
+  transition: all 0.2s ease-in-out;
+}
+
+.sideBarContent.minimize .collapseIcon {
+  font-size: 30px;
+  color: rgba(255, 255, 255, 1);
+  transition: all 0.2s ease-in-out;
+}
+
+.sideBarContent.minimize .collapseBtn:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.sideBarContent.minimize .collapseBtn:hover .collapseIcon {
+  color: rgb(121, 231, 11);
+}
+
+.collapseBtn {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.collapseIcon {
+  font-size: 50px;
+  color: rgb(121, 231, 11);
+  transition: all 0.3s ease-in-out;
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.hide {
+  display: none;
+}
+
+.footer p {
+  margin-top: 30px;
+}

@@ -1,0 +1,145 @@
+.cryptoListContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.cryptoListContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.popularInfoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 35%;
+}
+
+.popularInfoContent {
+  width: 70%;
+  height: 100%;
+
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.recentCardWrapper {
+  width: 40%;
+  height: 80%;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.popularCardWrapper {
+  width: 40%;
+  height: 80%;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.cryptoTableContainer {
+  width: 100%;
+  height: 65%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cryptoTableContent {
+  height: 500px;
+  width: 80%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px 20px 0px 0px;
+  position: relative;
+}
+
+.cryptoTable {
+  border-radius: 20px 20px 0px 0px;
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.cryptoTable thead {
+  position: sticky;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  z-index: 999;
+}
+
+.cryptoTable thead tr {
+  height: 60px;
+}
+
+.cryptoTable thead tr .headerNames {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  padding: 10px;
+}
+
+.cryptoTable th:first-child {
+  border-radius: 20px 0px 0px 0px;
+  display: table-cell;
+}
+
+.cryptoTable th:last-child {
+  border-radius: 0px 20px 0px 0px;
+  display: table-cell;
+}
+
+.cryptoTable th,
+.cryptoTable td {
+  background: transparent;
+  padding: 8px;
+  text-align: center;
+}
+
+.cryptoTable tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.cryptoTable tbody {
+  height: 300px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.cryptoTable tbody tr {
+  height: 80px;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.cryptoTable tbody tr:hover {
+  transform: translateY(-0.5px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.paginationContainer {
+  width: 100%;
+  height: 10%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}

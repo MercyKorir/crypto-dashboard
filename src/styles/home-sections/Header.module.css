@@ -1,0 +1,63 @@
+.headerContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 50px 50px;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.backArrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.backArrow:hover {
+  border: 2px solid #000;
+}
+
+.backArrowIcon {
+  color: #fff;
+  font-size: 30px;
+  transition: all 0.2s ease-in-out;
+}
+
+.backArrow:hover .backArrowIcon {
+  color: #000;
+}
+
+.userProfile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.userIcon {
+    color: #000;
+    font-size: 50px;
+    transition: all 0.2s ease-in-out;
+}
+
+.userProfile:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.userProfile:hover .userIcon {
+    color: #fff;
+}
