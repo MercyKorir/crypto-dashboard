@@ -47,7 +47,7 @@ The project utilizes the following technologies:
 ### Firebase Setup
 
 1. Create a new Firebase project in the [Firebase Console](https://console.firebase.google.com/).
-2. Enable the Authentication and Firestore Database services for your project.
+2. Enable the Authentication for your project.
 3. In the Authentication section, enable the "Email/Password" sign-in method.
 4. Create a new Web App in your project and copy the Firebase configuration details.
 
