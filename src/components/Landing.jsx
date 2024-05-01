@@ -1,8 +1,27 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import LoadingAnimation from "./LoadingAnimation";
 import styles from "../styles/Landing.module.css";
 
 const Landing = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (isLoading) {
+    return <LoadingAnimation />;
+  }
+
+  const handleStarted = () => {
+    navigate("/signin");
+  };
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -13,7 +32,9 @@ const Landing = () => {
         <div className={styles.heroContent}>
           <h1>Welcome to Our Website</h1>
           <p>Experience the best products and services.</p>
-          <button className={styles.heroBtn}>Get Started</button>
+          <button className={styles.heroBtn} onClick={handleStarted}>
+            Get Started
+          </button>
         </div>
       </div>
 

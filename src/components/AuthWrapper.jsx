@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import LoadingAnimation from "./LoadingAnimation";
 import styles from "../styles/AuthWrapper.module.css";
 
 const AuthWrapper = ({ children, formType }) => {
@@ -6,6 +7,14 @@ const AuthWrapper = ({ children, formType }) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+    return () => clearTimeout(timeout);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -37,6 +46,10 @@ const AuthWrapper = ({ children, formType }) => {
     };
     determineHeight();
   }, [formType, screenWidth]);
+
+  if (isLoading) {
+    return <LoadingAnimation />;
+  }
 
   return (
     <div className={styles.authContainer}>
