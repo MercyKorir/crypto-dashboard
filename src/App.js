@@ -29,7 +29,7 @@ function App() {
             </AuthWrapper>
           }
         />
-        <Route path="/details" element={<Details />} />
+        <Route path="/crypto/:id" element={<Details />} />
       </Routes>
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import styles from "../../styles/home-sections/CryptoList.module.css";
 
@@ -100,7 +101,14 @@ const CryptoList = () => {
                             alt={crypto.name}
                             className={styles.cryptoLogo}
                           />
-                          <span>{crypto.name}</span>
+                          <span>
+                            <Link
+                              to={`/crypto/${crypto.id}`}
+                              className={styles.nameLink}
+                            >
+                              {crypto.name}
+                            </Link>
+                          </span>
                           <span className={styles.cryptoSymbol}>
                             {crypto.symbol.toUpperCase()}
                           </span>

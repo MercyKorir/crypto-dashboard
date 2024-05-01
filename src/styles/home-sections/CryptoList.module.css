@@ -180,6 +180,11 @@
   color: #fff;
 }
 
+.nameLink {
+  color: #fff;
+  text-decoration: none;
+}
+
 .cryptoLogo,
 .logoNameSymbol span {
   margin-top: 20px;

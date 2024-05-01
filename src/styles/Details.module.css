@@ -1,0 +1,67 @@
+.cryptoPageContainer {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(34, 52, 174, 0.4);
+  background-image: linear-gradient(
+    215deg,
+    rgba(34, 52, 174, 1) 0%,
+    rgba(25, 23, 20, 0.5) 74%
+  );
+}
+
+.detailsContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.title {
+  font-size: 24px;
+  margin: 0;
+}
+
+.symbol {
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: bold;
+  margin: 0;
+  margin-left: 20px;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.priceContainer,
+.marketCapContainer {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 5px;
+  width: 48%;
+}
+
+.priceContainer h3,
+.marketCapContainer h3 {
+  font-size: 18px;
+  margin-top: 0;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 50px;
+}
