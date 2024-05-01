@@ -8,10 +8,10 @@ const Header = () => {
     <div className={styles.headerContainer}>
       <div className={styles.headerContent}>
         <div className={styles.backArrow}>
-          <ArrowBackIcon className={styles.backArrowIcon} />
+          <ArrowBackIcon className={styles.backArrowIcon} fontSize="inherit" />
         </div>
         <div className={styles.userProfile}>
-          <PersonIcon className={styles.userIcon} />
+          <PersonIcon className={styles.userIcon} fontSize="inherit" />
         </div>
       </div>
     </div>
