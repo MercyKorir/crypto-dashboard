@@ -1,48 +1,48 @@
 .container {
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #2234ae;
+  background-image: linear-gradient(315deg, #2234ae 0%, #191714 74%);
 }
 
 /* Header */
 .header {
-  background-color: #333;
+  background-color: transparent;
+  backdrop-filter: blur(20px);
   color: #fff;
-  padding: 20px;
-}
-
-.nav {
+  padding: 50px 100px 50px 100px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .logo {
-  font-size: 24px;
+  font-size: 34px;
   font-weight: bold;
 }
 
-.navLinks {
-  display: flex;
-  list-style: none;
-}
-
-.navLinks li {
-  margin-left: 20px;
-}
-
-.navLinks li a {
-  color: #fff;
+.loginBtn {
+  background-color: #fff;
+  padding: 15px 50px;
+  border-radius: 5px;
+  font-size: 24px;
+  letter-spacing: 1px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   text-decoration: none;
+  color: #333;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
-/* Hero */
+.loginBtn:hover {
+  background-color: #f2f2f2;
+}
+
 .hero {
   flex: 1;
-  background-image: url("https://example.com/hero-background.jpg");
-  background-size: cover;
-  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,19 +65,24 @@
 }
 
 .heroBtn {
-  background-color: #ff6600;
-  color: #fff;
+  background-color: #ffffff;
+  color: #333;
   border: none;
-  padding: 12px 24px;
+  border-radius: 5px;
+  padding: 20px 50px;
   font-size: 18px;
   cursor: pointer;
+  font-size: 24px;
+  letter-spacing: 1px;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0 4px 4px rgba(255, 255, 255, 0.25);
 }
 
-/* Footer */
 .footer {
-  background-color: #333;
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
   color: #fff;
-  padding: 40px 20px;
+  padding: 40px 100px;
 }
 
 .footerContent {
@@ -88,28 +93,19 @@
 }
 
 .footerLogo {
-  font-size: 24px;
+  font-size: 34px;
   font-weight: bold;
 }
 
-.footerLinks ul {
-  list-style: none;
-  display: flex;
-}
-
-.footerLinks ul li {
-  margin-right: 20px;
-}
-
-.footerLinks ul li a {
-  color: #fff;
-  text-decoration: none;
-}
-
 .footerSocial a {
+  text-decoration: none;
   color: #fff;
-  font-size: 24px;
+  font-size: 40px;
   margin-left: 20px;
+}
+
+.footerSocial a:hover {
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .footerCopyright {
