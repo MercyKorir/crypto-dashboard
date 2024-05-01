@@ -3,6 +3,7 @@ import axios from "axios";
 import styles from "../../styles/home-sections/CryptoList.module.css";
 
 const CryptoList = () => {
+  const [username, setUsername] = useState("");
   const [cryptos, setCryptos] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
@@ -32,6 +33,13 @@ const CryptoList = () => {
     fetchCryptos();
   }, [currentPage, itemsPerPage]);
 
+  useEffect(() => {
+    const userName = localStorage.getItem("userName");
+    if (userName) {
+      setUsername(userName);
+    }
+  }, []);
+
   const getPageNumbers = () => {
     const totalPages = Math.ceil(cryptos.length / itemsPerPage);
     const pageNumbers = [];
@@ -52,8 +60,14 @@ const CryptoList = () => {
       <div className={styles.cryptoListContent}>
         <div className={styles.popularInfoContainer}>
           <div className={styles.popularInfoContent}>
-            <div className={styles.recentCardWrapper}></div>
-            <div className={styles.popularCardWrapper}></div>
+            <div className={styles.recentCardWrapper}>
+              <h2>Welcome, {username}!</h2>
+              <p>This is your dashboard.</p>
+            </div>
+            <div className={styles.popularCardWrapper}>
+              <h2>Popular Cryptocurrencies</h2>
+              <p>Check out the latest trends.</p>
+            </div>
           </div>
         </div>
         <div className={styles.cryptoTableContainer}>
@@ -77,7 +91,9 @@ const CryptoList = () => {
                   .map((crypto, index) => {
                     return (
                       <tr key={crypto.id}>
-                        <td className={styles.cryptoData}>{(currentPage - 1) * itemsPerPage + index + 1}</td>
+                        <td className={styles.cryptoData}>
+                          {(currentPage - 1) * itemsPerPage + index + 1}
+                        </td>
                         <td className={styles.logoNameSymbol}>
                           <img
                             src={crypto.image}

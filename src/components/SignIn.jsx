@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import EmailIcon from "@mui/icons-material/Email";
@@ -12,10 +13,25 @@ const SignIn = () => {
   const [emailFocus, setEmailFocus] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
   const [error, setError] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    // Check if user is logged in and send them to dashboard
+    const checkUser = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsLoggedIn(true);
+        navigate("/dashboard");
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
+
+    return () => checkUser();
+  }, [navigate]);
 
   const validateEmail = () => {
     let emailErrors = {};

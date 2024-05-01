@@ -36,18 +36,39 @@
   width: 40%;
   height: 80%;
   border-radius: 15px;
-  background: rgba(0, 0, 0, 0.1);
+  background-color: #2234ae;
+  background-image: linear-gradient(315deg, #191714 30%, #2234ae 84%);
   backdrop-filter: blur(20px);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  justify-content: center;
+}
+
+.recentCardWrapper h2 {
+  font-size: 28px;
+}
+
+.recentCardWrapper p {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .popularCardWrapper {
   width: 40%;
   height: 80%;
   border-radius: 15px;
-  background: rgba(0, 0, 0, 0.1);
+  background-color: #2234ae;
+  background-image: linear-gradient(215deg, #2234ae 30%, #191714 84%);
   backdrop-filter: blur(20px);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  justify-content: center;
 }
 
 .cryptoTableContainer {
@@ -160,7 +181,8 @@
   color: #fff;
 }
 
-.cryptoLogo, .logoNameSymbol span {
+.cryptoLogo,
+.logoNameSymbol span {
   margin-top: 20px;
 }
 
