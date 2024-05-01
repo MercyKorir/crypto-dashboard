@@ -69,6 +69,19 @@
   position: relative;
 }
 
+.cryptoTableContent::-webkit-scrollbar {
+  width: 10px;
+}
+
+.cryptoTableContent::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.cryptoTableContent::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .cryptoTable {
   border-radius: 20px 20px 0px 0px;
   width: 100%;
@@ -94,7 +107,7 @@
   color: #fff;
   font-size: 20px;
   font-weight: 500;
-  text-align: center;
+  text-align: left;
   padding: 10px;
 }
 
@@ -112,28 +125,65 @@
 .cryptoTable td {
   background: transparent;
   padding: 8px;
-  text-align: center;
+  text-align: left;
 }
 
 .cryptoTable tr:nth-child(even) {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.cryptoTable tbody {
-  height: 300px;
-  overflow-y: auto;
-  scroll-behavior: smooth;
-}
-
 .cryptoTable tbody tr {
   height: 80px;
   font-size: 18px;
   font-weight: normal;
+  cursor: pointer;
 }
 
 .cryptoTable tbody tr:hover {
   transform: translateY(-0.5px);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cryptoTable thead tr th:first-child {
+  padding-left: 30px;
+}
+
+.cryptoTable tbody tr td:first-child {
+  padding-left: 30px;
+}
+
+.logoNameSymbol {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+}
+
+.cryptoLogo, .logoNameSymbol span {
+  margin-top: 20px;
+}
+
+.cryptoTable tbody tr:hover .logoNameSymbol span {
+  text-decoration: underline;
+}
+
+.cryptoLogo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.cryptoSymbol {
+  font-weight: 600;
+}
+
+.cryptoPrice {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.cryptoData {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .paginationContainer {

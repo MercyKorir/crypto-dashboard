@@ -24,7 +24,6 @@ const CryptoList = () => {
         );
 
         setCryptos(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
@@ -65,7 +64,7 @@ const CryptoList = () => {
                   <th className={styles.headerNames}>#</th>
                   <th className={styles.headerNames}>Name</th>
                   <th className={styles.headerNames}>Price</th>
-                  <th className={styles.headerNames}>24%</th>
+                  <th className={styles.headerNames}>24h %</th>
                   <th className={styles.headerNames}>Market Cap</th>
                 </tr>
               </thead>
@@ -77,12 +76,28 @@ const CryptoList = () => {
                   )
                   .map((crypto, index) => {
                     return (
-                      <tr key={index}>
-                        <td>{(currentPage - 1) * itemsPerPage + index + 1}</td>
-                        <td>{crypto.name}</td>
-                        <td>${crypto.current_price}</td>
-                        <td>{crypto.price_change_percentage_24h}%</td>
-                        <td>${crypto.market_cap}</td>
+                      <tr key={crypto.id}>
+                        <td className={styles.cryptoData}>{(currentPage - 1) * itemsPerPage + index + 1}</td>
+                        <td className={styles.logoNameSymbol}>
+                          <img
+                            src={crypto.image}
+                            alt={crypto.name}
+                            className={styles.cryptoLogo}
+                          />
+                          <span>{crypto.name}</span>
+                          <span className={styles.cryptoSymbol}>
+                            {crypto.symbol.toUpperCase()}
+                          </span>
+                        </td>
+                        <td className={styles.cryptoData}>
+                          ${crypto.current_price}
+                        </td>
+                        <td className={styles.cryptoPrice}>
+                          {crypto.price_change_percentage_24h.toFixed(2)}%
+                        </td>
+                        <td className={styles.cryptoData}>
+                          ${crypto.market_cap}
+                        </td>
                       </tr>
                     );
                   })}

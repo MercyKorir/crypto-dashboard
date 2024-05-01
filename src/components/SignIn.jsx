@@ -81,8 +81,10 @@ const SignIn = () => {
     try {
       const userInfo = await signInWithEmailAndPassword(auth, email, password);
       const user = userInfo.user;
-      console.log(user);
-      navigate("/");
+
+      const userName = user.displayName;
+      localStorage.setItem("userName", userName);
+      navigate("/dashboard");
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;

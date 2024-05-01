@@ -5,12 +5,14 @@ import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Details from "./components/Details";
 import AuthWrapper from "./components/AuthWrapper";
+import Landing from "./components/Landing";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Landing />} />
+        <Route path="/dashboard" element={<Home />} />
         <Route
           path="/signin"
           element={

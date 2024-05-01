@@ -1,0 +1,117 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navLinks {
+  display: flex;
+  list-style: none;
+}
+
+.navLinks li {
+  margin-left: 20px;
+}
+
+.navLinks li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Hero */
+.hero {
+  flex: 1;
+  background-image: url("https://example.com/hero-background.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroContent {
+  text-align: center;
+  color: #fff;
+  max-width: 600px;
+}
+
+.heroContent h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.heroContent p {
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+.heroBtn {
+  background-color: #ff6600;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 20px;
+}
+
+.footerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.footerLogo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.footerLinks ul {
+  list-style: none;
+  display: flex;
+}
+
+.footerLinks ul li {
+  margin-right: 20px;
+}
+
+.footerLinks ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footerSocial a {
+  color: #fff;
+  font-size: 24px;
+  margin-left: 20px;
+}
+
+.footerCopyright {
+  text-align: center;
+}

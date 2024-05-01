@@ -4,7 +4,7 @@ import NorthWestIcon from "@mui/icons-material/NorthWest";
 import NorthEastIcon from "@mui/icons-material/NorthEast";
 import styles from "../../styles/home-sections/SideBar.module.css";
 
-const SideBar = (handleLogout) => {
+const SideBar = ({ logout }) => {
   const [collapse, setCollapse] = useState(false);
 
   const handleCollapse = () => {
@@ -36,7 +36,7 @@ const SideBar = (handleLogout) => {
                 </Link>
               </div>
               <div className={styles.logoutBtnContainer}>
-                <button onClick={handleLogout} className={styles.logoutBtn}>
+                <button onClick={logout} className={styles.logoutBtn}>
                   Logout
                 </button>
               </div>
