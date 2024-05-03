@@ -3,7 +3,8 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  padding: 50px 0px;
+  align-items: center;
+  padding: 30px 0px;
   background: rgba(255, 255, 255, 1);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   border-radius: 0px 20px 20px 0px;
@@ -11,19 +12,19 @@
 }
 
 .sideBarContainer.minimize {
-  width: 80px;
+  width: 50px;
   background: transparent;
   backdrop-filter: blur(20px);
 }
 
 .sideBarContent {
   width: 100%;
-  height: 100%;
+  height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: 0px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -46,13 +47,17 @@
   border-top: none;
 }
 
+.logo h1 {
+  font-size: 12px;
+}
+
 .nav {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 80px;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
-  padding-top: 40px;
+  padding-top: 30px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -66,7 +71,7 @@
 }
 
 .homeBtnContainer {
-  width: 80%;
+  width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,14 +89,15 @@
 .homeBtn,
 .logoutBtn {
   text-decoration: none;
-  font-size: 20px;
-  text-transform: uppercase;
+  font-size: 12px;
+  text-transform: capitalize;
   font-weight: 700;
   color: #fff;
+  transition: all 0.2s ease-in-out;
 }
 
 .logoutBtnContainer {
-  width: 80%;
+  width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -121,12 +127,12 @@
 
 .sideBarContent.minimize .collapseBtn {
   background: none;
-  padding: 20px;
+  padding: 10px;
   transition: all 0.2s ease-in-out;
 }
 
 .sideBarContent.minimize .collapseIcon {
-  font-size: 30px;
+  font-size: 20px;
   color: rgba(255, 255, 255, 1);
   transition: all 0.2s ease-in-out;
 }
@@ -146,19 +152,20 @@
   align-items: center;
   background: rgba(255, 255, 255, 0.7);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  padding: 30px;
+  padding: 10px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 
 .collapseIcon {
-  font-size: 50px;
+  font-size: 20px;
   color: rgb(121, 231, 11);
   transition: all 0.3s ease-in-out;
 }
 
 .footer {
-  width: 100%;
+  width: 90%;
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -172,4 +179,144 @@
 
 .footer p {
   margin-top: 30px;
+  font-size: 12px;
+}
+
+/* Media Queries */
+@media (min-width: 425px) {
+  .logo h1 {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 500px) {
+  .sideBarContainer.minimize {
+    width: 70px;
+  }
+
+  .logo h1 {
+    font-size: 18px;
+  }
+
+  .homeBtn,
+  .logoutBtn {
+    text-transform: uppercase;
+  }
+
+  .sideBarContent.minimize .collapseBtn {
+    padding: 18px;
+  }
+
+  .sideBarContent.minimize .collapseIcon {
+    font-size: 24px;
+  }
+
+  .collapseBtn {
+    padding: 18px;
+  }
+
+  .collapseIcon {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 500px) {
+  .sideBarContainer.minimize {
+    width: 80px;
+  }
+
+  .logo h1 {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 768px) {
+  .sideBarContainer {
+    height: 100%;
+    padding: 50px 0px;
+  }
+
+  .sideBarContent {
+    height: 100%;
+    gap: 20px;
+  }
+
+  .topContent {
+    gap: 20px;
+  }
+
+  .logo h1 {
+    font-size: 32px;
+  }
+
+  .nav {
+    gap: 80px;
+    padding-top: 40px;
+  }
+
+  .navButtons {
+    gap: 20px;
+  }
+
+  .homeBtnContainer {
+    width: 80%;
+    padding: 20px 0px;
+  }
+
+  .homeBtn,
+  .logoutBtn {
+    font-size: 20px;
+    text-transform: capitalize;
+  }
+
+  .logoutBtnContainer {
+    width: 80%;
+  }
+
+  .logoutBtn {
+    padding: 20px 0px;
+  }
+
+  .sideBarContent.minimize .collapseBtn {
+    padding: 20px;
+  }
+
+  .sideBarContent.minimize .collapseIcon {
+    font-size: 30px;
+  }
+
+  .collapseBtn {
+    padding: 20px;
+  }
+
+  .collapseIcon {
+    font-size: 40px;
+  }
+
+  .footer {
+    width: 100%;
+  }
+
+  .footer p {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 992px) {
+  .homeBtn,
+  .logoutBtn {
+    text-transform: uppercase;
+  }
+
+  .collapseBtn {
+    padding: 30px;
+  }
+
+  .collapseIcon {
+    font-size: 50px;
+  }
+
+  .footer p {
+    font-size: 20px;
+  }
 }
