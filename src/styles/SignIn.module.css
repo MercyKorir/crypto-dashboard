@@ -9,47 +9,45 @@
   gap: 20px;
 }
 
-.inputItem {
+.inputBox {
   position: relative;
+  width: 100%;
 }
 
-.inputItem span {
+.inputBox .formIcon {
   width: fit-content;
   transition: all 0.3s ease-in-out;
-  /* display: flex;
-    align-items: center; */
-}
-
-.inputItem span.hideIcon {
-  display: none;
-}
-
-.inputItem .formIcon {
   position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   left: 15px;
   color: rgba(0, 0, 0, 0.7);
-  transform: translateY(70%);
   font-size: 30px;
   transition: all 0.3s ease-in-out;
 }
 
-.inputItem label {
+.inputBox input:focus ~ .formIcon,
+.inputBox input:valid ~ .formIcon {
+  opacity: 0;
+}
+
+.inputBox label {
   position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   left: 50px;
   font-size: 18px;
-  transform: translateY(100%);
   color: rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease-in-out;
 }
 
-.inputItem label.hideLabel {
-  /* display: none; */
+.inputBox input:focus ~ label,
+.inputBox input:valid ~ label {
+  top: -20%;
   left: 10px;
-  transform: translateY(-110%);
-  color: rgba(255, 255, 255, 0.5);
 }
 
-.inputItem input {
+.inputBox input {
   width: 250px;
   height: 70px;
   border: transparent;
@@ -158,17 +156,16 @@
 
 /*Media Queries*/
 @media (min-width: 425px) {
-  .inputItem .formIcon {
+  .inputBox .formIcon {
     font-size: 35px;
-    transform: translateY(50%);
   }
 
-  .inputItem label {
+  .inputBox label {
     font-size: 18px;
     left: 55px;
   }
 
-  .inputItem input {
+  .inputBox input {
     width: 340px;
     height: 70px;
     font-size: 18px;
@@ -205,17 +202,16 @@
     gap: 20px;
   }
 
-  .inputItem .formIcon {
+  .inputBox .formIcon {
     left: 20px;
   }
 
-  .inputItem label {
+  .inputBox label {
     font-size: 20px;
     left: 60px;
-    transform: translateY(80%);
   }
 
-  .inputItem input {
+  .inputBox input {
     width: 500px;
     height: 80px;
     font-size: 20px;

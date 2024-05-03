@@ -43,19 +43,21 @@
 
 .details {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  flex: auto;
+  gap: 20px;
 }
 
-.priceContainer,
-.marketCapContainer {
+.itemInfoContainer,
+.itemInfoContainer {
   background-color: #f5f5f5;
   padding: 20px;
   border-radius: 5px;
   width: 48%;
 }
 
-.priceContainer h3,
-.marketCapContainer h3 {
+.itemInfoContainer h3,
+.itemInfoContainer h3 {
   font-size: 18px;
   margin-top: 0;
 }

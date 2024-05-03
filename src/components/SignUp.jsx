@@ -9,11 +9,6 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 
 const SignUp = () => {
-  const [emailFocus, setEmailFocus] = useState(false);
-  const [passwordFocus, setPasswordFocus] = useState(false);
-  const [confPasswordFocus, setConfPasswordFocus] = useState(false);
-  const [usernameFocus, setUsernameFocus] = useState(false);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confPassword, setConfPassword] = useState("");
@@ -102,38 +97,18 @@ const SignUp = () => {
 
   const handleEmailBlur = () => {
     validateEmail();
-    setEmailFocus(false);
   };
 
   const handlePwdBlur = () => {
     validatePassword();
-    setPasswordFocus(false);
   };
 
   const handleConfPwdBlur = () => {
     validateConfPassword();
-    setConfPasswordFocus(false);
   };
 
   const handleUsernameBlur = () => {
     validateUsername();
-    setUsernameFocus(false);
-  };
-
-  const handleEmailFocus = () => {
-    setEmailFocus(true);
-  };
-
-  const handlePasswordFocus = () => {
-    setPasswordFocus(true);
-  };
-
-  const handleConfPasswordFocus = () => {
-    setConfPasswordFocus(true);
-  };
-
-  const handleUsernameFocus = () => {
-    setUsernameFocus(true);
   };
 
   const handleSubmit = async (e) => {
@@ -153,14 +128,12 @@ const SignUp = () => {
       const user = userInfo.user;
 
       await updateProfile(user, { displayName: username });
-
-      console.log(user);
-      navigate("/");
+      localStorage.setItem("userName", username);
+      navigate("/dashboard");
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
       setError({ firebaseError: `${errorCode}: ${errorMessage}` });
-      console.log(errorCode, errorMessage);
     }
   };
 
@@ -169,26 +142,20 @@ const SignUp = () => {
       <form onSubmit={handleSubmit}>
         <div className={styles.inputContainer}>
           <div className={styles.inputItem}>
-            <div>
-              <span className={usernameFocus ? styles.hideIcon : ""}>
-                <AccountCircleIcon className={styles.formIcon} />
-              </span>
+            <div className={styles.inputBox}>
               <input
                 type="text"
                 id="username"
                 name="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                onFocus={handleUsernameFocus}
                 onBlur={handleUsernameBlur}
                 required
               />
-              <label
-                htmlFor="username"
-                className={usernameFocus ? styles.hideLabel : ""}
-              >
-                Username
-              </label>
+              <span className={styles.formIcon}>
+                <AccountCircleIcon fontSize="inherit" />
+              </span>
+              <label htmlFor="username">Username</label>
             </div>
             <div
               className={`${
@@ -202,26 +169,20 @@ const SignUp = () => {
             </div>
           </div>
           <div className={styles.inputItem}>
-            <div>
-              <span className={emailFocus ? styles.hideIcon : ""}>
-                <EmailIcon className={styles.formIcon} />
-              </span>
+            <div className={styles.inputBox}>
               <input
                 type="email"
                 id="email"
                 name="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                onFocus={handleEmailFocus}
                 onBlur={handleEmailBlur}
                 required
               />
-              <label
-                htmlFor="email"
-                className={emailFocus ? styles.hideLabel : ""}
-              >
-                Email
-              </label>
+              <span className={styles.formIcon}>
+                <EmailIcon fontSize="inherit" />
+              </span>
+              <label htmlFor="email">Email</label>
             </div>
             <div
               className={`${
@@ -235,26 +196,20 @@ const SignUp = () => {
             </div>
           </div>
           <div className={styles.inputItem}>
-            <div>
-              <span className={passwordFocus ? styles.hideIcon : ""}>
-                <LockIcon className={styles.formIcon} />
-              </span>
+            <div className={styles.inputBox}>
               <input
                 type="password"
                 id="password"
                 name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                onFocus={handlePasswordFocus}
                 onBlur={handlePwdBlur}
                 required
               />
-              <label
-                htmlFor="password"
-                className={passwordFocus ? styles.hideLabel : ""}
-              >
-                Password
-              </label>
+              <span className={styles.formIcon}>
+                <LockIcon fontSize="inherit" />
+              </span>
+              <label htmlFor="password">Password</label>
             </div>
             <div
               className={`${
@@ -268,26 +223,20 @@ const SignUp = () => {
             </div>
           </div>
           <div className={styles.inputItem}>
-            <div>
-              <span className={confPasswordFocus ? styles.hideIcon : ""}>
-                <LockIcon className={styles.formIcon} />
-              </span>
+            <div className={styles.inputBox}>
               <input
                 type="password"
                 id="confirm"
                 name="confirm"
                 value={confPassword}
                 onChange={(e) => setConfPassword(e.target.value)}
-                onFocus={handleConfPasswordFocus}
                 onBlur={handleConfPwdBlur}
                 required
               />
-              <label
-                htmlFor="confirm"
-                className={confPasswordFocus ? styles.hideLabel : ""}
-              >
-                Confirm Password
-              </label>
+              <span className={styles.formIcon}>
+                <LockIcon fontSize="inherit" />
+              </span>
+              <label htmlFor="confirm">Confirm Password</label>
             </div>
             <div
               className={`${

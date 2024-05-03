@@ -10,8 +10,6 @@ import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import styles from "../styles/SignIn.module.css";
 
 const SignIn = () => {
-  const [emailFocus, setEmailFocus] = useState(false);
-  const [passwordFocus, setPasswordFocus] = useState(false);
   const [error, setError] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
@@ -75,20 +73,10 @@ const SignIn = () => {
 
   const handleEmailBlur = () => {
     validateEmail();
-    setEmailFocus(false);
   };
 
   const handlePwdBlur = () => {
     validatePassword();
-    setPasswordFocus(false);
-  };
-
-  const handleEmailFocus = () => {
-    setEmailFocus(true);
-  };
-
-  const handlePasswordFocus = () => {
-    setPasswordFocus(true);
   };
 
   const handleSubmit = async (e) => {
@@ -104,8 +92,7 @@ const SignIn = () => {
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
-      setError({ firebaseError: `Error: ${errorCode} - ${errorMessage}` });
-      console.log(errorCode, errorMessage);
+      setError({ firebaseError: `${errorCode}: ${errorMessage}` });
     }
   };
 
@@ -114,26 +101,20 @@ const SignIn = () => {
       <form onSubmit={handleSubmit}>
         <div className={styles.inputContainer}>
           <div className={styles.inputItem}>
-            <div>
-              <span className={emailFocus ? styles.hideIcon : ""}>
-                <EmailIcon className={styles.formIcon} />
-              </span>
+            <div className={styles.inputBox}>
               <input
                 type="email"
                 id="email"
                 name="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                onFocus={handleEmailFocus}
                 onBlur={handleEmailBlur}
                 required
               />
-              <label
-                htmlFor="email"
-                className={emailFocus ? styles.hideLabel : ""}
-              >
-                Email
-              </label>
+              <span className={styles.formIcon}>
+                <EmailIcon fontSize="inherit" />
+              </span>
+              <label htmlFor="email">Email</label>
             </div>
             <div
               className={`${
@@ -147,26 +128,20 @@ const SignIn = () => {
             </div>
           </div>
           <div className={styles.inputItem}>
-            <div>
-              <span className={passwordFocus ? styles.hideIcon : ""}>
-                <LockIcon className={styles.formIcon} />
-              </span>
+            <div className={styles.inputBox}>
               <input
                 type="password"
                 id="password"
                 name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                onFocus={handlePasswordFocus}
                 onBlur={handlePwdBlur}
                 required
               />
-              <label
-                htmlFor="password"
-                className={passwordFocus ? styles.hideLabel : ""}
-              >
-                Password
-              </label>
+              <span className={styles.formIcon}>
+                <LockIcon fontSize="inherit" />
+              </span>
+              <label htmlFor="password">Password</label>
             </div>
             <div
               className={`${
