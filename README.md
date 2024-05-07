@@ -11,6 +11,7 @@ A single-page application (SPA) built with React that displays information about
     - [Firebase Setup](#firebase-setup)
     - [Local Setup](#local-setup)
 5. [Usage](#usage)
+6. [Demo](#demo)
 
 ## Introduction
 
@@ -83,3 +84,13 @@ The application should now be running at `http://localhost:3000`.
 4. The homepage displays a list of cryptocurrencies with their details.
 5. Click on a cryptocurrency to navigate to the details page and view more information.
 6. Use the pagination controls to navigate through the list of cryptocurrencies.
+
+## Demo
+
+<div align="center">
+  <a href="https://drive.google.com/file/d/19C9M9pLVpNDPlv7FH3RBtWMClWwhcUMX/view?usp=drive_link">
+    <img src="./Screenshot (411)(1).png" alt="Crypto Dashboard Demo Video" style="max-width: 100%; object-fit: contain;" />
+  </a>
+</div>
+
+Click the image above to watch the demo video.
