@@ -7,11 +7,14 @@ import { useNavigate } from "react-router-dom";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import styles from "../styles/SignIn.module.css";
 
 const SignIn = () => {
   const [error, setError] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showPwd, setShowPwd] = useState(false);
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -129,8 +132,23 @@ const SignIn = () => {
           </div>
           <div className={styles.inputItem}>
             <div className={styles.inputBox}>
+              <span className={styles.visibilityIcon}>
+                <div onClick={() => setShowPwd(!showPwd)}>
+                  {showPwd ? (
+                    <VisibilityIcon
+                      fontSize="inherit"
+                      style={{ cursor: "pointer" }}
+                    />
+                  ) : (
+                    <VisibilityOffIcon
+                      fontSize="inherit"
+                      style={{ cursor: "pointer" }}
+                    />
+                  )}
+                </div>
+              </span>
               <input
-                type="password"
+                type={showPwd ? "text" : "password"}
                 id="password"
                 name="password"
                 value={password}

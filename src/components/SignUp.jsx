@@ -7,6 +7,8 @@ import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -14,6 +16,8 @@ const SignUp = () => {
   const [confPassword, setConfPassword] = useState("");
   const [username, setUsername] = useState("");
   const [error, setError] = useState({});
+  const [showPwd, setShowPwd] = useState(false);
+  const [showConfPwd, setShowConfPwd] = useState(false);
 
   const navigate = useNavigate();
 
@@ -197,8 +201,23 @@ const SignUp = () => {
           </div>
           <div className={styles.inputItem}>
             <div className={styles.inputBox}>
+              <span className={styles.visibilityIcon}>
+                <div onClick={() => setShowPwd(!showPwd)}>
+                  {showPwd ? (
+                    <VisibilityIcon
+                      fontSize="inherit"
+                      style={{ cursor: "pointer" }}
+                    />
+                  ) : (
+                    <VisibilityOffIcon
+                      fontSize="inherit"
+                      style={{ cursor: "pointer" }}
+                    />
+                  )}
+                </div>
+              </span>
               <input
-                type="password"
+                type={showPwd ? "text" : "password"}
                 id="password"
                 name="password"
                 value={password}
@@ -224,8 +243,23 @@ const SignUp = () => {
           </div>
           <div className={styles.inputItem}>
             <div className={styles.inputBox}>
+              <span className={styles.visibilityIcon}>
+                <div onClick={() => setShowConfPwd(!showConfPwd)}>
+                  {showConfPwd ? (
+                    <VisibilityIcon
+                      fontSize="inherit"
+                      style={{ cursor: "pointer" }}
+                    />
+                  ) : (
+                    <VisibilityOffIcon
+                      fontSize="inherit"
+                      style={{ cursor: "pointer" }}
+                    />
+                  )}
+                </div>
+              </span>
               <input
-                type="password"
+                type={showConfPwd ? "text" : "password"}
                 id="confirm"
                 name="confirm"
                 value={confPassword}
