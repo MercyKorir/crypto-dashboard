@@ -220,6 +220,21 @@
   align-items: center;
 }
 
+.paginationContainer button {
+  background-color: #2234ae;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 0px 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.paginationContainer button:hover {
+  background-color: #191714;
+}
+
 /* Media Queries */
 @media (min-width: 768px) {
   .popularInfoContainer {
