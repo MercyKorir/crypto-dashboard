@@ -1,38 +1,45 @@
 import React, { useState, useEffect } from "react";
+import { useQuery, useQueryClient } from "react-query";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import styles from "../../styles/home-sections/CryptoList.module.css";
 
 const CryptoList = () => {
   const [username, setUsername] = useState("");
-  const [cryptos, setCryptos] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
+  const [totalPages, setTotalPages] = useState(1);
 
-  useEffect(() => {
-    const fetchCryptos = async () => {
-      try {
-        const response = await axios.get(
-          "https://api.coingecko.com/api/v3/coins/markets",
-          {
-            params: {
-              vs_currency: "usd",
-              order: "market_cap_desc",
-              per_page: 100,
-              page: 20,
-              sparkline: false,
-            },
-          }
-        );
+  const queryClient = useQueryClient();
 
-        setCryptos(response.data);
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      }
-    };
+  const {
+    data: cryptos,
+    isLoading,
+    error,
+  } = useQuery(
+    ["cryptos", currentPage, itemsPerPage],
+    async () => {
+      const response = await axios.get(
+        "https://api.coingecko.com/api/v3/coins/markets",
+        {
+          params: {
+            vs_currency: "usd",
+            order: "market_cap_desc",
+            per_page: itemsPerPage,
+            page: currentPage,
+            sparkline: false,
+          },
+        }
+      );
 
-    fetchCryptos();
-  }, [currentPage, itemsPerPage]);
+      setTotalPages(Math.ceil(response.headers["total"] / itemsPerPage));
+      return response.data;
+    },
+    {
+      keepPreviousData: true,
+      staleTime: 60000,
+    }
+  );
 
   useEffect(() => {
     const userName = localStorage.getItem("userName");
@@ -41,8 +48,12 @@ const CryptoList = () => {
     }
   }, []);
 
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    queryClient.invalidateQueries(["cryptos", pageNumber, itemsPerPage]);
+  };
+
   const getPageNumbers = () => {
-    const totalPages = Math.ceil(cryptos.length / itemsPerPage);
     const pageNumbers = [];
 
     for (let i = 1; i <= Math.min(totalPages, 20); i++) {
@@ -50,10 +61,6 @@ const CryptoList = () => {
     }
 
     return pageNumbers;
-  };
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
   };
 
   return (
@@ -84,12 +91,20 @@ const CryptoList = () => {
                 </tr>
               </thead>
               <tbody>
-                {cryptos
-                  .slice(
-                    (currentPage - 1) * itemsPerPage,
-                    currentPage * itemsPerPage
-                  )
-                  .map((crypto, index) => {
+                {isLoading ? (
+                  <tr>
+                    <td colSpan="5" className={styles.cryptoData}>
+                      Loading...
+                    </td>
+                  </tr>
+                ) : error ? (
+                  <tr>
+                    <td colSpan="5" className={styles.cryptoData}>
+                      An Error occurred! Please try again later.
+                    </td>
+                  </tr>
+                ) : cryptos && cryptos.length > 0 ? (
+                  cryptos.map((crypto, index) => {
                     return (
                       <tr key={crypto.id}>
                         <td className={styles.cryptoData}>
@@ -117,14 +132,23 @@ const CryptoList = () => {
                           ${crypto.current_price}
                         </td>
                         <td className={styles.cryptoPrice}>
-                          {crypto.price_change_percentage_24h.toFixed(2)}%
+                          {crypto.price_change_percentage_24h?.toFixed(2) ??
+                            "N/A"}
+                          %
                         </td>
                         <td className={styles.cryptoData}>
                           ${crypto.market_cap}
                         </td>
                       </tr>
                     );
-                  })}
+                  })
+                ) : (
+                  <tr>
+                    <td colSpan="5" className={styles.cryptoData}>
+                      No data available.
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
@@ -146,9 +170,7 @@ const CryptoList = () => {
             ))}
             <button
               onClick={() => handlePageChange(currentPage + 1)}
-              disabled={
-                currentPage === Math.ceil(cryptos.length / itemsPerPage)
-              }
+              disabled={currentPage === totalPages}
             >
               Next
             </button>
